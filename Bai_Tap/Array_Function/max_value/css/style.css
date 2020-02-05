@@ -1,0 +1,24 @@
+form{
+    width: fit-content;
+    margin: 2em auto;
+    border: 0px solid ;
+    background-color: khaki;
+    padding: 2em ;
+}
+label{
+    width: 150px;
+}
+input[type="submit"]{
+    background-color: green;
+    color: ivory;
+}
+table{
+    margin: 2em auto;
+}
+td,tr{
+    width: 50px;
+    text-align: center;
+}
+#row{
+padding-left: 2em;
+}
