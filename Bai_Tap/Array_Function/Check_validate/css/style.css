@@ -1,0 +1,20 @@
+form{
+    width: 500px;
+    margin: 2em auto;
+    border: 0px solid ;
+    background-color: khaki;
+    padding: 2em ;
+}
+label{
+    width: 150px;
+}
+input[type="submit"]{
+    background-color: green;
+    color: ivory;
+}
+#result,#error{
+    font-size: larger;
+}
+#error{
+    color: red;
+}
