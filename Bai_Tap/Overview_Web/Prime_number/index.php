@@ -13,7 +13,7 @@
         <div class="input">
             <form method="post">
                 <label>Number max:</label>
-                <input type="text" name="number" value="<?= $num ?? null ?>">
+                <input type="text" name="number" value="<?= $num ?? 100 ?>">
                 <input type="submit" value="Print">
             </form>
         </div>
