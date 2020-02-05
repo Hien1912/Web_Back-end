@@ -1,6 +1,6 @@
 <?php
-    if($_SERVER["REQUEST_METHOD"]=="POST"){
-        $shape=$_POST["shape"];
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $shape = $_POST["shape"];
         switch ($shape) {
             case "rect":
                 echo drawRect();
@@ -22,24 +22,13 @@
                 break;
         }
     }
-    function drawRect(){
-        $temp = "<table>";
-        for($i=0;$i<10;$i++){
-            $temp .="<tr>";
-            for($j=0;$j<20;$j++){
-                $temp .= "<td>*</td>";
-            }
-            $temp .= "</tr>";
-        }
-        $temp .= "</table>";
-        return $temp;
-    }
-    function drawTriagle1(){
-        $temp = "<table>";
-        for($i=0;$i<10;$i++){
 
+    function drawRect()
+    {
+        $temp = "<table>";
+        for ($i = 0; $i < 10; $i++) {
             $temp .= "<tr>";
-            for($j=0;$j<$i;$j++){
+            for ($j = 0; $j < 20; $j++) {
                 $temp .= "<td>*</td>";
             }
             $temp .= "</tr>";
@@ -47,11 +36,13 @@
         $temp .= "</table>";
         return $temp;
     }
-    function drawTriagle2(){
+
+    function drawTriagle1()
+    {
         $temp = "<table>";
-        for($i=10;$i>0;$i--){
+        for ($i = 0; $i < 10; $i++) {
             $temp .= "<tr>";
-            for($j=$i;$j>0;$j--){
+            for ($j = 0; $j < $i; $j++) {
                 $temp .= "<td>*</td>";
             }
             $temp .= "</tr>";
@@ -59,14 +50,30 @@
         $temp .= "</table>";
         return $temp;
     }
-    function drawTriagle3(){
+
+    function drawTriagle2()
+    {
         $temp = "<table>";
-        for($i=0;$i<10;$i++){
+        for ($i = 10; $i > 0; $i--) {
             $temp .= "<tr>";
-            for($j=0;$j<$i;$j++ ){
+            for ($j = $i; $j > 0; $j--) {
+                $temp .= "<td>*</td>";
+            }
+            $temp .= "</tr>";
+        }
+        $temp .= "</table>";
+        return $temp;
+    }
+
+    function drawTriagle3()
+    {
+        $temp = "<table>";
+        for ($i = 0; $i < 10; $i++) {
+            $temp .= "<tr>";
+            for ($j = 0; $j < $i; $j++) {
                 $temp .= "<td></td>";
             }
-            for($j=10-$i;$j>0;$j-- ){
+            for ($j = 10 - $i; $j > 0; $j--) {
                 $temp .= "<td>*</td>";
             }
             $temp .= "</tr>";
@@ -74,30 +81,33 @@
         $temp .= "</table>";
         return $temp;
     }
-    function drawTriagle4(){
+
+    function drawTriagle4()
+    {
         $temp = "<table>";
-        for($i=0;$i<10;$i++){
+        for ($i = 0; $i < 10; $i++) {
             $temp .= "<tr>";
-            for($j=10-$i;$j>0;$j--){
+            for ($j = 10 - $i; $j > 0; $j--) {
                 $temp .= "<td></td>";
             }
-            for($j=0;$j<$i;$j++){
+            for ($j = 0; $j < $i; $j++) {
                 $temp .= "<td>*</td>";
             }
             $temp .= "</tr>";
         }
         $temp .= "</table>";
         return $temp;
-    }   
-    function drawIsoTriagle(){
+    }
+    
+    function drawIsoTriagle()
+    {
         $temp = "<table>";
-        for($i=0;$i<20;$i++){
+        for ($i = 0; $i < 20; $i++) {
             $temp .= "<tr>";
-            for($j=0;$j<20;$j++){
-                if($j<$i&&$j>20-$i){
+            for ($j = 0; $j < 20; $j++) {
+                if ($j < $i && $j > 20 - $i) {
                     $temp .= "<td>*</td>";
-                }
-                else{
+                } else {
                     $temp .= "<td></td>";
                 }
             }
@@ -106,3 +116,4 @@
         $temp .= "</table>";
         return $temp;
     }
+?>
