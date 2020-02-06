@@ -1,5 +1,5 @@
 <?php
-$array = json_decode(file_get_contents("data.json"));
+$array = [1,0,2,3,4,5,6,7,8,9,10];
 if (isset($_POST["value"])) {
     $value = getValue($_POST["value"]);
     if (!$value&&$value!=0) {
