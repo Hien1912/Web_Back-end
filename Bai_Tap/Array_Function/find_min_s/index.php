@@ -59,6 +59,7 @@
         <div>
             <?php
             if (count($arr) > 0) {
+                echo "Array:";
                 foreach ($arr as $value) {
                     echo " $value";
                 }
