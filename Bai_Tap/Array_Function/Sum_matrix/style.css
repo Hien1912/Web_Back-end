@@ -1,0 +1,16 @@
+.cheo,::placeholder{
+color: red;
+}
+table,tr,td{
+    border: 1px solid blue;
+    border-collapse: collapse;
+    min-width: 40px;
+    text-align: center;
+    height: 40px;
+}
+input{
+    margin: 1em auto;
+}
+body{
+    margin: 2em 2em;
+}
