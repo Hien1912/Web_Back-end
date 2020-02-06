@@ -33,8 +33,10 @@
         file_put_contents("data.json", json_encode([]));
     }
     if (isset($_GET['submit'])) {
+        $link="http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+        $link=str_replace("?submit=Clear",null,$link);
         clearData();
-        header('Location: ' . 'http://localhost:3000/Bai_Tap/Array_Function/find_min_s/index.php', true);
+        header('Location: ' . "$link", true);
     }
 ?>
 <!DOCTYPE html>
