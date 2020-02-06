@@ -1,0 +1,35 @@
+fieldset{
+    width: fit-content;
+    margin: .5em auto;
+    border: 5px transparent sienna;
+}
+legend{
+    font-size: larger;
+}
+input{
+    margin-bottom: .5em;
+    font-size: larger;
+}
+label{
+    text-align: left;
+    font-size: larger;
+}
+::placeholder{
+    color: red;
+}
+.showtb,.showtd,.showtr{
+    border: 1px solid blue;
+    border-collapse: collapse;
+    text-align: center;
+    margin: .5em auto;
+}
+.fill{
+    width: fit-content;
+}
+.showtd{
+    width: 30px;
+    height: 30px;
+}
+#reset{
+    background-color: red;
+}
