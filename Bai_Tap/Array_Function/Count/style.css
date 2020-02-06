@@ -1,0 +1,9 @@
+input,label,textarea{
+    margin: .5em;
+}
+::placeholder {
+    color: red;
+  }
+table{
+    text-align: left;
+  }
