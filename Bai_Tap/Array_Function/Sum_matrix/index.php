@@ -4,6 +4,7 @@ if (isset($_REQUEST["lenght"])) {
     $lenght=trim(htmlspecialchars($_REQUEST["lenght"]));
     if (intval($lenght)&&$lenght>0) {
         $lenght=(int)$lenght;
+        $result=showMatrix($lenght);
     }else {
         $error=empty($lenght)&&$lenght!="0"?"Empty!":"Must be integer and upper 0";
         $lenght=null;
@@ -11,23 +12,31 @@ if (isset($_REQUEST["lenght"])) {
 }
 
 function showMatrix($lenght){
-    echo "<table>";
+    $tb = "<table>";
     $sum=0;
+    $matrix=[];
     for ($i=0; $i < $lenght; $i++) {
-        echo "<tr>";
+        $matrix[$i]=[];
+        $tb.= "<tr>";
         for ($j=0; $j < $lenght; $j++) {
             if ($i===$j) {
-                $tmp=random_int(0,100);
-                $sum+=$tmp;
-                echo "<td class='cheo'>".$tmp."</td>";
+                $matrix[$i][$j]=random_int(0,100);
+                $sum+=$matrix[$i][$j];
+                $tb.= "<td class='cheo'>".$matrix[$i][$j]."</td>";
                 continue;
             }
-            echo "<td>".random_int(0,100)."</td>";
+            $matrix[$i][$j]=random_int(0,100);
+            $tb.= "<td>".$matrix[$i][$j]."</td>";
         }
-        echo "</tr>";
+        $tb.= "</tr>";
     }
-    echo "</table>";
-    echo "<h2>Sum = $sum</h2>";
+    $tb.= "</table>";
+    $result=[
+        "matrix" => $matrix,
+        "show" => $tb,
+        "sum" => $sum
+    ];
+    return $result;
 }
 ?>
 
@@ -47,7 +56,8 @@ function showMatrix($lenght){
         <input type="submit" value="Create Matrix">
     </form>
     <div>
-        <?php $lenght?showMatrix($lenght):null?>
+        <?= $lenght?"<h2>Sum: ".$result['sum']."</h2>":null?>
+        <?= $lenght?"Matrix:".$result["show"]:null?>
     </div>
 </body>
 </html>
