@@ -34,7 +34,7 @@
     }
     if (isset($_GET['submit'])) {
         clearData();
-        header('Location: ' . "$link", true);
+        header('Location: ' . 'http://localhost:3000/Bai_Tap/Array_Function/find_min_s/index.php', true);
     }
 ?>
 <!DOCTYPE html>
@@ -49,7 +49,7 @@
 <body>
     <form method="post">
         <label>Lenght array 1:</label><br>
-        <input type="text" name="number" value="<?= $number ?? "" ?>"><br>
+        <input type="text" name="number"><br>
         <?= $error ? (empty($number) ? "Empty<br>" : "Not be number!<br>") : null ?>
         <input type="submit" value="Add Number">
     </form>
