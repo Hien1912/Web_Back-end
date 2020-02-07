@@ -33,3 +33,11 @@ label{
 #reset{
     background-color: red;
 }
+th{
+    background-color: darkslategray;
+    color: gold;
+    font-size: larger;
+}
+.sumcol{
+    border: 0 solid;
+}

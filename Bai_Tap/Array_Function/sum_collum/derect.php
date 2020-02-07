@@ -1,11 +1,10 @@
 <?php
 $error = null;
 if (!empty($_POST)) {
+    session_start();
     $matrix = null;
     $arr = $_POST;
     $error = checkError($arr);
-    $url="http://"."$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-    $url=str_replace("index.php","matrix.php",$url);
     if ($error === null) {
         $row = (int) $arr["row"];
         $col = (int) $arr["col"];
@@ -16,7 +15,7 @@ if (!empty($_POST)) {
             'matrix'=>$matrix
         ];
         file_put_contents("data.json",json_encode($data));
-        header('Location: '.$url);
+        header('Location: matrix.php');
     }
 }
 

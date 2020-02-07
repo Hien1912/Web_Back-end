@@ -5,11 +5,12 @@
     $matrix=$data->matrix;
     $sum=null;
     $error=null;
+    $j=null;
     if (isset($_GET["col"])) {
         $j=$_GET["col"];
         $error=checkError($j);
         if (!$error) {
-            if ($j<=$cols) {
+            if ($j<$cols) {
                 $sum=sumValue($matrix,$j);
             }
             else {
@@ -17,12 +18,10 @@
             }
         }
     }
-    $url="http://"."$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"."&reset=ok";
     if (isset($_GET["reset"])) {
-        if ($_GET["reset"]==="New Matrix") {
-        $url="http://"."$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-        $url=str_replace("matrix.php","index.php",$url);
-        header('Location: '.$url);
+        if ($_GET["reset"]==="ok") {
+        file_put_contents("data.json",json_encode([]));
+        header('Location: index.php');
         }
     }
 
@@ -70,10 +69,14 @@
             <label>Sum Column:</label><br>
             <input type="text" name="col" placeholder="<?=$error?>">
             <a href="<?='/row?='.$_REQUEST['col']?>"><input type="submit" value="Count"></a><br>
-            <a href="<?='/reset?='.$_REQUEST['reset']?>"><input type="submit" name="reset" id="reset" value="New Matrix"></a>
+            <a href="<?='matrix.php?reset=ok'?>"><input type="button" id="reset" value="New Matrix"></a>
         </form>
-        <h3><?=$sum?"Column $j Sum: $sum":null?></h2>
         <table class="showtb">
+            <tr class="showtr">
+            <?php for ($i=0;$i<$cols;$i++ ):?>
+                <th class="showtd"><?= $i?></th>
+            <?php endfor ?>
+            </tr>
             <?php for ($i=0; $i  < $rows; $i++):?>
             <tr class="showtr">
             <?php foreach ($matrix[$i] as $value):?>
@@ -81,6 +84,11 @@
             <?php endforeach ?>
             </tr>
             <?php endfor ?>
+            <tr class="showtr">
+            <?php for ($i=0;$i<$cols;$i++ ):?>
+                <td class="sumcol"><?=($i==$j)?$sum:null?></th>
+            <?php endfor ?>
+            </tr>
         </table>
     </fieldset>
 </body>

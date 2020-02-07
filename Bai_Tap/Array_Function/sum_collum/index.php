@@ -17,22 +17,22 @@ include "derect.php";
             <table>
                 <thead>
                     <tr>
-                        <th>Total rows:</th>
-                        <th>
+                        <td>Total rows:</td>
+                        <td>
                             <input type="text" name="row" placeholder="<?=$error['row']??null?>">
-                        </th>
+                        </td>
                     </tr>
                     <tr>
-                        <th>Total cols:</th>
-                        <th>
+                        <td>Total cols:</td>
+                        <td>
                             <input type="text" name="col" placeholder="<?=$error['col']??null?>">
-                        </th>
+                        </td>
                     </tr>
                     <tr>
-                        <th></th>
-                        <th>
+                        <td></td>
+                        <td>
                             <input type="submit" value="Generate Matrix">
-                        </th>
+                        </td>
                     </tr>
                 </thead>
             </table>
