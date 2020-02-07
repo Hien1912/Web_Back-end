@@ -33,10 +33,8 @@
         file_put_contents("data.json", json_encode([]));
     }
     if (isset($_GET['submit'])) {
-        $link="http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-        $link=str_replace("?submit=Clear",null,$link);
         clearData();
-        header('Location: ' . "$link", true);
+        header('Location: index.php');
     }
 ?>
 <!DOCTYPE html>
