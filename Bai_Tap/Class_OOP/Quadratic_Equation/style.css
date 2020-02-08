@@ -1,0 +1,23 @@
+.button{
+    width: fit-content;
+}
+
+.reset{
+    width:30%;
+    float: left;
+    margin: .5em 1em .5em 0;
+}
+
+.submit{
+    margin-top: .5em;
+    width:50%;
+    float: left;
+}
+
+h2{
+    clear:left;
+}
+
+span{
+    color: red;
+}
