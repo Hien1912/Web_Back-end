@@ -1,7 +1,7 @@
 <?php
+session_start();
 $error = null;
 if (!empty($_POST)) {
-    session_start();
     $matrix = null;
     $arr = $_POST;
     $error = checkError($arr);
@@ -9,12 +9,9 @@ if (!empty($_POST)) {
         $row = (int) $arr["row"];
         $col = (int) $arr["col"];
         $matrix = generateMatrix($row, $col);
-        $data=[
-            'row'=>$row,
-            'col'=>$col,
-            'matrix'=>$matrix
-        ];
-        file_put_contents("data.json",json_encode($data));
+        $_SESSION['row'] = $row;
+        $_SESSION['col'] = $col;
+        $_SESSION['matrix'] = $matrix;
         header('Location: matrix.php');
     }
 }
@@ -22,7 +19,7 @@ if (!empty($_POST)) {
 function generateMatrix($row, $col) {
     $matrix = null;
     for ($i = 0; $i < $row; $i++) {
-        $matrix[$i]=null;
+        $matrix[$i] = null;
         for ($j = 0; $j < $col; $j++) {
             $matrix[$i][$j] = random_int(0, 10);
         }

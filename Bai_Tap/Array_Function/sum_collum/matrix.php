@@ -1,34 +1,34 @@
 <?php
-    $data=json_decode(file_get_contents("data.json"));
-    $rows=$data->row;
-    $cols=$data->col;
-    $matrix=$data->matrix;
-    $sum=null;
-    $error=null;
-    $j=null;
+    session_start();
+    $rows = $_SESSION['row'];
+    $cols = $_SESSION['col'];
+    $matrix = $_SESSION['matrix'];
+    $sum = null;
+    $error = null;
+    $j = null;
     if (isset($_GET["col"])) {
-        $j=$_GET["col"];
+        $j = $_GET["col"];
         $error=checkError($j);
         if (!$error) {
-            if ($j<$cols) {
-                $sum=sumValue($matrix,$j);
+            if ($j < $cols) {
+                $sum = sumValue($matrix,$j);
             }
             else {
-                $error ="Column must be lower $cols";
+                $error = "Column must be lower $cols";
             }
         }
     }
     if (isset($_GET["reset"])) {
-        if ($_GET["reset"]==="ok") {
-        file_put_contents("data.json",json_encode([]));
+        if ($_GET["reset"] === "ok") {
+        session_destroy();
         header('Location: index.php');
         }
     }
 
-    function sumValue($matrix,$j){
-        $sum=null;
+    function sumValue($matrix, $j){
+        $sum = null;
         foreach ($matrix as $arr) {
-            $sum+=$arr[$j];
+            $sum += $arr[$j];
         }
         return $sum;
     }
@@ -80,13 +80,13 @@
             <?php for ($i=0; $i  < $rows; $i++):?>
             <tr class="showtr">
             <?php foreach ($matrix[$i] as $value):?>
-                <td class="showtd"><?=$value?></td>
+                <td class="showtd"><?= $value ?></td>
             <?php endforeach ?>
             </tr>
             <?php endfor ?>
             <tr class="showtr">
-            <?php for ($i=0;$i<$cols;$i++ ):?>
-                <td class="sumcol"><?=($i==$j)?$sum:null?></th>
+            <?php for ($i = 0; $i < $cols; $i++ ):?>
+                <td class="sumcol"><?= ($i==$j) ? $sum : null?></th>
             <?php endfor ?>
             </tr>
         </table>
