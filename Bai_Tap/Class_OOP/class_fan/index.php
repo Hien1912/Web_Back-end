@@ -15,6 +15,7 @@ include_once('test.php');
             <tr>
                 <th>Fan 1</th>
                 <th>Fan 2</th>
+                <th><a href="<?= '?clear=true' ?>"><input type="button" value="Reset"></a></th>
             </tr>
         </thead>
         <tbody>

@@ -5,13 +5,17 @@ include_once('fan.php');
     if ($_SESSION['fan']??false) {
         $fan1 = $_SESSION['fan1'];
         $fan2 = $_SESSION['fan2'];
+        if (isset($_GET['clear'])) {
+            session_destroy();
+            header("location: index.php");
+        }
     }
     else{
         $fan1 = new Fan();
-        $fan1->setSpeed("FAST");
         $fan1->setRadius(10);
         $fan1->setColor("yellow");
         $fan1->switchStatus();
+        $fan1->setSpeed("FAST");
         // Fan 2
         $fan2 = new Fan();
         $fan2->setSpeed("MEDIUM");
