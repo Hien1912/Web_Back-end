@@ -1,0 +1,9 @@
+table,tr,th,td{
+    min-width: 100px;
+    text-align: center;
+}
+td{
+    padding: .5em;
+    text-align: justify;
+    border: 1px solid blue;
+}
