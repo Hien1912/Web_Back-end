@@ -1,0 +1,35 @@
+.form{
+    width: 250px;
+}
+
+span{
+    width: 50px;
+    float: left;
+    margin: .5em 0;
+    color: royalblue;
+}
+
+input{
+    width: 150px;
+    float: left;
+    margin: .5em 0;
+}
+input[type="reset"],
+input[type="submit"]{
+    width: 70px;
+    float: left;
+    margin-left: 50px;
+    background-color: red;
+}
+input[type="submit"]{
+    margin-left: 15px;
+    background-color: royalblue;
+    color: white;
+}
+h1,.error{
+    clear: left;
+}
+.error{
+    width: fit-content;
+    color: red;
+}
