@@ -1,41 +1,5 @@
 <?php
-    $error = null;
-    $arr = [];
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $number = trim(htmlspecialchars($_POST["number"]));
-        $error = !filter_var($number, FILTER_VALIDATE_INT);
-        if ($number==="0") {
-            $error=false;
-        }
-        if (!$error) {
-            saveDataJSON($number);
-        }
-        $arr = json_decode(file_get_contents("data.json"));
-        if (count($arr)>0) {
-            $min = findMin($arr);
-        }
-    }
-    function saveDataJSON($num){
-        $temp = json_decode(file_get_contents("data.json"));
-        array_push($temp, $num);
-        file_put_contents("data.json", json_encode($temp));
-    }
-    function findMin($array){
-        $min = $array[0];
-        for ($i = 1; $i < count($array); $i++) {
-            if ($min > $array[$i]) {
-                $min = $array[$i];
-            }
-        }
-        return $min;
-    }
-    function clearData() {
-        file_put_contents("data.json", json_encode([]));
-    }
-    if (isset($_GET['submit'])) {
-        clearData();
-        header('Location: index.php');
-    }
+    include_once('data.php');
 ?>
 <!DOCTYPE html>
 <html lang="vi">
@@ -51,7 +15,7 @@
         <label>Lenght array 1:</label><br>
         <input type="text" name="number"><br>
         <?= $error ? (empty($number) ? "Empty<br>" : "Not be number!<br>") : null ?>
-        <input type="submit" value="Add Number">
+        <input type="submit" name='submit' value="Add Number">
     </form>
     <div>
         <div>
