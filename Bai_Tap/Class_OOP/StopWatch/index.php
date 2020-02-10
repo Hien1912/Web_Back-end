@@ -1,33 +1,42 @@
 <?php
-
-    class StopWatch{
-        private $startTime;
-        private $endTime;
-        public function __construct()
-        {
-            $this->endTime = 1;
-            $this->startTime=date('d/m/Y H:i:s');
-        }
-
-        public function getStart()
-        {
-            return $this->startTime;
-        }
-
-        public function getEnd()
-        {
-            return $this->endTime;
-        }
-
-        public function start()
-        {
-            // $this->startTime=date(d-m-Y H:i:s);
-        }
+include_once('data.php');
+session_start();
+$arr=[];
+if ($_SESSION['arr'] ?? false) {
+    $arr = $_SESSION['arr'];
+}
+else {
+    for ($i=0; $i < 100000; $i++) {
+        $arr[$i]=random_int(1,10);
     }
+    $_SESSION['arr']=$arr;
+}
 
-    // $exp=new StopWatch();
-    // echo $exp->getStart;
-    
+function selection_sort($arr) { 
+    for($i = 0; $i < count($arr) ; $i++) { 
+        $low = $i; 
+        for($j = $i + 1; $j < count($arr) ; $j++){ 
+            if ($arr[$j] < $arr[$low]){ 
+                $low = $j; 
+            } 
+        } 
+          
+        if ($arr[$i] > $arr[$low]) { 
+            $tmp = $arr[$i]; 
+            $arr[$i] = $arr[$low]; 
+            $arr[$low] = $tmp; 
+        } 
+    } 
+}
+
+if (isset($_POST['submit'])) {
+    $stopwatch = new StopWatch();
+    $stopwatch->start();
+    selection_sort($arr);
+    $stopwatch->stop();
+    $elapsedtime = $stopwatch->getElapsedTime();
+    session_destroy();
+}
 
 ?>
 <!DOCTYPE html>
@@ -39,7 +48,9 @@
 </head>
 <body>
     <form method="post">
-    <input type="text">
+        <input type="submit" name="submit" value="Submit">
     </form>
+    <h1><?= $elapsedtime ?? null ?></h1>
+    <h2><?= count($arr) ?></h2>
 </body>
 </html>
