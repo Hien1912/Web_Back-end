@@ -63,11 +63,11 @@
 
         public function getArea()
         {
-            $P = self::getPerimeter() / 2;
+            $P = $this->getPerimeter();
             $A = $this->side1;
             $B = $this->side2;
             $C = $this->side3;
-            return sqrt($P * ($P - $A) * ($P - $B) * ($P - $C));
+            return sqrt($P * ($P - $A) * ($P - $B) * ($P - $C)) / 4;
         
         }
 
