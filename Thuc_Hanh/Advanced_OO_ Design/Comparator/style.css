@@ -1,0 +1,19 @@
+div{
+    width: 300px;
+}
+span{
+    width: 40%;
+    float: left;
+    margin: .5em auto;
+}
+input{
+    width: 50%;
+    float: left;
+    margin: .5em auto;
+}
+.result{
+    clear: left;
+}
+input[type=submit]{
+    margin-left: 40%;
+}
