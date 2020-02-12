@@ -1,5 +1,4 @@
 <?php
-include_once ('Circle.php');
 
 class Cylinder extends Circle {
     public $height;
