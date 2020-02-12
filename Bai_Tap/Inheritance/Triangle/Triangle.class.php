@@ -1,5 +1,5 @@
 <?php
-include_once("Shape.php");
+include_once("Shape.class.php");
 
 class Triangle extends Shape{
     protected float $side1;

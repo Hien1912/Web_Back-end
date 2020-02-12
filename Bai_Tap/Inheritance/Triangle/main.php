@@ -1,5 +1,4 @@
 <?php
-include_once('Shape.class.php');
 include_once('Triangle.class.php');
 
 if (isset($_POST["submit"])) {
