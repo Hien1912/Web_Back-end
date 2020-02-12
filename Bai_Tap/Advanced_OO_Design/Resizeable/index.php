@@ -1,9 +1,10 @@
 <?php
-include_once ('Circle.php');
-include_once ('Cylinder.php');
-include_once ('Rectangle.php');
-include_once ('Square.php');
-include_once ('Resizeable.php');
+include_once ('Shape.class.php');
+include_once ('Resizeable.interface.php');
+include_once ('Circle.class.php');
+include_once ('Cylinder.class.php');
+include_once ('Rectangle.class.php');
+include_once ('Square.class.php');
 
 // Class Circle example
 
