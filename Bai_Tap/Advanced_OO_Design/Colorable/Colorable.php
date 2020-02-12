@@ -1,5 +1,7 @@
 <?php
-    interface Colorable{
-        public function howToColor();
-    }
+
+interface Colorable {
+    public function howToColor();
+}
+
 ?>

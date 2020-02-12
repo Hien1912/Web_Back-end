@@ -1,5 +1,4 @@
 <?php
-
 include_once ('Circle.php');
 include_once ('Cylinder.php');
 include_once ('Rectangle.php');
@@ -24,3 +23,4 @@ foreach ($shapes as $shape) {
     }
 }
 
+?>

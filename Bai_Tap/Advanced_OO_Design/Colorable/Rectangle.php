@@ -1,9 +1,7 @@
 <?php
-
 include_once ('Shape.php');
 
-class Rectangle extends Shape
-{
+class Rectangle extends Shape {
     public $width;
     public $height;
 
@@ -22,3 +20,5 @@ class Rectangle extends Shape
         return ($this->height + $this->width) * 2;
     }
 }
+
+?>

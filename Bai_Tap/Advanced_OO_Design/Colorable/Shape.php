@@ -1,7 +1,6 @@
 <?php
 
-class Shape
-{
+class Shape {
     public $name;
 
     public function __construct($name)
@@ -13,3 +12,5 @@ class Shape
         return "I am a shape. My name is $this->name";
     }
 }
+
+?>
