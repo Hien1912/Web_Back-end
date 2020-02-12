@@ -1,9 +1,7 @@
 <?php
-
 include_once ('Resizeable.php');
 
-class Shape
-{
+class Shape {
     public $name;
 
     public function __construct($name)
@@ -11,7 +9,9 @@ class Shape
         $this->name = $name;
     }
 
-    public function show(){
+    public function showInfor(){
         return "I am a shape. My name is $this->name";
     }
 }
+
+?>

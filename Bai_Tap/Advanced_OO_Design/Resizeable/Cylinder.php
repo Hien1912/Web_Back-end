@@ -1,9 +1,7 @@
 <?php
-
 include_once ('Circle.php');
 
-class Cylinder extends Circle
-{
+class Cylinder extends Circle {
     public $height;
 
     public function __construct($name, $radius, $height)
@@ -21,3 +19,5 @@ class Cylinder extends Circle
         return parent::calculateArea() * $this->height;
     }
 }
+
+?>

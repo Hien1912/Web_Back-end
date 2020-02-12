@@ -1,7 +1,7 @@
 <?php
 
-    interface Resizeable {
-        public function resizeAble($size);
-    }
+interface Resizeable {
+    public function resizeAble($size);
+}
 
 ?>

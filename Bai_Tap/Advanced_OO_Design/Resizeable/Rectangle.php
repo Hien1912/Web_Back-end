@@ -1,5 +1,4 @@
 <?php
-
 include_once ('Shape.php');
 include_once ('Resizeable.php');
 
@@ -28,3 +27,5 @@ class Rectangle extends Shape implements Resizeable {
         return ($this->height + $this->width) * 2;
     }
 }
+
+?>
