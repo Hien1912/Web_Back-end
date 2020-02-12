@@ -1,6 +1,4 @@
-<?php
-include_once('test.php');
-?>
+<?php include_once ('process.php'); ?>
 <!DOCTYPE html>
 <html lang="vi">
 <head>
