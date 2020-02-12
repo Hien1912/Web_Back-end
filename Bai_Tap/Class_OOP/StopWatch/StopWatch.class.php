@@ -6,7 +6,7 @@ class StopWatch{
 
     public function __construct()
     {
-        $this->startTime=round(microtime(true) * 1000);
+        $this->startTime = round(microtime(true) * 1000);
     }
 
     public function getStart()
@@ -21,12 +21,12 @@ class StopWatch{
 
     public function start()
     {
-        $this->startTime=round(microtime(true) * 1000);
+        $this->startTime = round(microtime(true) * 1000);
     }
 
     public function stop()
     {
-        $this->endTime=round(microtime(true) * 1000);
+        $this->endTime = round(microtime(true) * 1000);
     }
 
     public function getElapsedTime()
