@@ -1,17 +1,39 @@
 <?php
 include_once('FizzBuzz.php');
 
-use PHPUnit\Framework\TestCase;
-
-class FizzBuzzTest extends TestCase {
-    
+class FizzBuzzTest
+{
     public function testFizz3()
     {
         $number = 3;
         $expected = "Fizz";
 
         $result = new FizzBuzz($number);
-        $this->assertEquals($expected, $result);
+        $equal = $this->assertEquals($expected, $result);
+        if ($equal) {
+            return "3";
+        } else {
+            return "!3";
+        }
+    }
+    /**
+     *
+     * Description for function
+     *
+     * @param    type  $expected Description
+     * @param    type  $result Description
+     *
+     * @return      type
+     *
+     */
+
+    function assertEquals($expected, $result)
+    {
+        if ($expected == $result) {
+            return true;
+        } else {
+            echo false;
+        }
     }
 
     public function testFizz6()
@@ -20,7 +42,12 @@ class FizzBuzzTest extends TestCase {
         $expected = "Fizz";
 
         $result = new FizzBuzz($number);
-        $this->assertEquals($expected, $result);
+        $equal = $this->assertEquals($expected, $result);
+        if ($equal) {
+            return "6";
+        } else {
+            return "!6";
+        }
     }
 
     public function testFizz5()
@@ -29,7 +56,12 @@ class FizzBuzzTest extends TestCase {
         $expected = "Buzz";
 
         $result = new FizzBuzz($number);
-        $this->assertEquals($expected, $result);
+        $equal = $this->assertEquals($expected, $result);
+        if ($equal) {
+            return "5";
+        } else {
+            return "!5";
+        }
     }
 
     public function testFizz15()
@@ -38,15 +70,33 @@ class FizzBuzzTest extends TestCase {
         $expected = "FizzBuzz";
 
         $result = new FizzBuzz($number);
-        $this->assertEquals($expected, $result);
+        $equal = $this->assertEquals($expected, $result);
+        if ($equal) {
+            return "15";
+        } else {
+            return "!15";
+        }
     }
 
     public function testFizz7()
     {
         $number = 7;
-        $expected = $number."";
-
+        $expected = $number . "";
         $result = new FizzBuzz($number);
-        $this->assertEquals($expected, $result);
+        $equal = $this->assertEquals($expected, $result);
+        if ($equal) {
+            return "7";
+        } else {
+            return "!7";
+        }
+    }
+
+    function __toString()
+    {
+        return  $this->testFizz3() . "<br>" .
+            $this->testFizz5() . "<br>" .
+            $this->testFizz6() . "<br>" .
+            $this->testFizz7() . "<br>" .
+            $this->testFizz15() . "<br>";
     }
 }

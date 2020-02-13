@@ -1,18 +1,33 @@
 <?php
 
-class FizzBuzz {
-    public $status;
+class FizzBuzz
+{
+    public string $status;
 
     public function __construct($number)
     {
-        if($number % 3 == 0 && $number % 5 == 0) {
-            $this->status =  "FizzBuzz";
-        } elseif ($number % 3 == 0) {
-            $this->status = "Fizz";
-        } elseif ($number % 5 == 0) {
-            $this->status = "Buzz";
+        $this->status = $this->convertNumberToStatus($number);
+    }
+
+    /**
+     * Set the value of status from number
+     *
+     * @return  self
+     */
+
+    public function convertNumberToStatus($number)
+    {
+        $isDivisibleBy3 = $number % 3 == 0;
+        $isDivisibleBy5 = $number % 5 == 0;
+
+        if ($isDivisibleBy3 && $isDivisibleBy5) {
+            return  "FizzBuzz";
+        } elseif ($isDivisibleBy3) {
+            return "Fizz";
+        } elseif ($isDivisibleBy5) {
+            return "Buzz";
         } else {
-            $this->status =  $number."";
+            return  "";
         }
     }
 
