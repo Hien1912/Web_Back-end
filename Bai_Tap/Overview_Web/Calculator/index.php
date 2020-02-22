@@ -8,7 +8,7 @@
     <title>[Bài tập] Ứng dụng Calculator</title>
 </head>
 <body>
-    <?php include "process.php"?>
+    <?php include "process.php" ?>
     <div id="content">
         <h1>Simple Calculator</h1>
         <fieldset>
@@ -36,7 +36,7 @@
             </form>
         </fieldset>
         <h1>Result:</h1>
-        <p><?php echo  $error ?? ($result==null ? "":($first . " $operator " . $second . " = " . $result)) ?></p>
+        <p><?php echo $error ?? ($result == null ? "" : ($first . " $operator " . $second . " = " . $result)) ?></p>
     </div>
 </body>
 </html>
