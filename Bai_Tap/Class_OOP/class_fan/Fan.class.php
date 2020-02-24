@@ -1,5 +1,6 @@
 <?php
-class Fan {
+class Fan
+{
     private const SLOW = 1;
     private const MEDIUM = 2;
     private const FAST = 3;
@@ -22,8 +23,7 @@ class Fan {
                     $this->speed = self::SLOW;
                     break;
             }
-        }
-        else{
+        } else {
             $this->speed = 0;
         }
     }
@@ -42,7 +42,7 @@ class Fan {
     {
         return $this->color;
     }
-    
+
     public function setRadius($radius)
     {
         $this->radius = $radius;
@@ -63,8 +63,7 @@ class Fan {
         if ($this->on) {
             $this->on = false;
             $this->speed = 0;
-        }
-        else{
+        } else {
             $this->on = true;
             $this->speed = self::SLOW;
         }
@@ -79,5 +78,3 @@ class Fan {
                 fan is " . ($this->on ? 'on' : 'off');
     }
 }
-
-?>
