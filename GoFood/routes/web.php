@@ -13,6 +13,34 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+
+
+Route::get('/dictionary', function () {
+    $word = null;
+    $result = null;
+
+    return view('translate', compact('result', 'word'));
+});
+
+Route::post('/dictionary', function () {
+    $word = $_POST['word'];
+    $key = strtolower(trim($word));
+    $words = [
+        'run' => "Chạy ngay đi",
+        'go' => "Đi thôi nào",
+        'tiger' => "Hua òa",
+        'dog' => 'Gâu dâu',
+        'cat' => 'Meo meo',
+        'rat' || 'mouse' => 'Chít chít'
+    ];
+
+    if (array_key_exists($key, $words))
+        return view('translate', ['result' => $words[$key], 'word' => $word]);
+
+    return view('translate', ['result' => "Không tìm thấy " . $word, 'word' => $word]);
+});
+
 Route::get('/', function () {
     return view('welcome');
 });
