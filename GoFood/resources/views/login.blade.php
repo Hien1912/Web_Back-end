@@ -16,7 +16,7 @@
                     <label for="username">Tên đăng nhập</label>
                 </div>
                 <div class="col-9">
-                    <input type="text" name="username" id="username" placeholder="Tên đăng nhập">
+                <input type="text" name="username" id="username" placeholder="Tên đăng nhập">
                 </div>
             </div>
             <div class="form-row">
@@ -24,7 +24,7 @@
                     <label for="password">Mật khẩu</label>
                 </div>
                 <div class="col-9">
-                    <input type="password" name="password" id="password" placeholder="Password">
+                <input type="password" name="password" id="password" placeholder="Password">
                 </div>
             </div>
             <div class="form-footer">

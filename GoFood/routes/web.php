@@ -41,6 +41,6 @@ Route::get('/login', function () {
 
 Route::post('/login', function () {
     if ($_POST['password'] == 'admin')
-        echo $_POST['username'];
-    else return view('login');
+        return view('login_success', ['name' => $_POST['username']]);
+    else return view('login_error');
 });
