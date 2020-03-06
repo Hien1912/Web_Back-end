@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,7 +14,27 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/home', 'HomeController@index');
 
+Route::get('/user-name/{name?}', function ($name = 'Sohel') {
+    echo "<h2>User name is $name</h2>";
+});
+
+Route::get('/user/{name}', function ($name) {
+    return view('user', ['name' => $name]);
+});
+
+Route::get('/user', function () {
+    return view('user', ['name' => 'Masud Alam']);
+});
+
+Route::get('/about', function () {
+    return "about";
+});
+
+Route::get('/contact', function () {
+    return "contact";
+});
 
 
 Route::get('/dictionary', function () {
