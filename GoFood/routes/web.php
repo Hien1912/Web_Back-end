@@ -21,89 +21,110 @@ Route::get('/BTcontroller', "IndexController@index");
 // [Thực hành] Khởi tạo ứng dụng Task Management - P1
 
 Route::prefix('customer')->group(function () {
-    Route::get('index', function () {
-        // Hiển thị danh sách khách hàng
-        session_start();
-        $customers = [
-            1 => [
-                'id' => 1,
-                'hovaten' => 'Nguyễn Văn A',
-                'sodienthoai' => '0123456789',
-                'email' => 'test@email.com'
-            ],
-            [
-                'id' => 2,
-                'hovaten' => 'Nguyễn Văn B',
-                'sodienthoai' => '0123456789',
-                'email' => 'test@email.com'
-            ],
-            [
-                'id' => 3,
-                'hovaten' => 'Nguyễn Văn C',
-                'sodienthoai' => '0123456789',
-                'email' => 'test@email.com'
-            ],
-            [
-                'id' => 4,
-                'hovaten' => 'Nguyễn Văn D',
-                'sodienthoai' => '0123456789',
-                'email' => 'test@email.com'
-            ]
-        ];
-        if (!isset($_SESSION['customers'])) {
-            $_SESSION['customers'] = $customers;
-        }
 
-        return view("modules.customer.index", ['customers' => $_SESSION['customers']]);
+    // [Thực hành] Tạo controller của ứng dụng Task Management - P3
+
+    Route::prefix('customer')->group(function () {
+
+        Route::get('index', 'CustomerController@index');
+
+        Route::get('create', 'CustomerController@create');
+
+        Route::post('store', 'CustomerController@store');
+
+        Route::get('{id}/show', 'CustomerController@show');
+
+        Route::get('{id}/edit', 'CustomerController@edit');
+
+        Route::patch('{id}/update', 'CustomerController@update');
+
+        Route::delete('{id}', 'CustomerController@destroy');
     });
 
-    Route::get('create', function () {
-        // Hiển thị Form tạo khách hàng
-        return view("modules.customer.create");
-    });
 
-    Route::post('store', function () {
-        // Xử lý lưu dữ liệu tạo khách hàng thong qua phương thức POST từ form
-        session_start();
-        $_SESSION['customers'][] = [
-            'id' => count($_SESSION['customers']) + 1,
-            'hovaten' => $_POST['hovaten'],
-            'sodienthoai' => $_POST['sodienthoai'],
-            'email' => $_POST['email']
-        ];
-        return view('modules.customer.index', ['customers' => $_SESSION['customers']]);
-    });
+    // Route::get('index', function () {
+    //     // Hiển thị danh sách khách hàng
+    //     session_start();
+    //     $customers = [
+    //         1 => [
+    //             'id' => 1,
+    //             'hovaten' => 'Nguyễn Văn A',
+    //             'sodienthoai' => '0123456789',
+    //             'email' => 'test@email.com'
+    //         ],
+    //         [
+    //             'id' => 2,
+    //             'hovaten' => 'Nguyễn Văn B',
+    //             'sodienthoai' => '0123456789',
+    //             'email' => 'test@email.com'
+    //         ],
+    //         [
+    //             'id' => 3,
+    //             'hovaten' => 'Nguyễn Văn C',
+    //             'sodienthoai' => '0123456789',
+    //             'email' => 'test@email.com'
+    //         ],
+    //         [
+    //             'id' => 4,
+    //             'hovaten' => 'Nguyễn Văn D',
+    //             'sodienthoai' => '0123456789',
+    //             'email' => 'test@email.com'
+    //         ]
+    //     ];
+    //     if (!isset($_SESSION['customers'])) {
+    //         $_SESSION['customers'] = $customers;
+    //     }
 
-    Route::get('{id}/show', function ($id) {
-        // Hiển thị thông tin chi tiết khách hàng có mã định danh id
-        session_start();
-        return view('modules.customer.show', ['customer' => $_SESSION['customers'][$id]]);
-    });
+    //     return view("modules.customer.index", ['customers' => $_SESSION['customers']]);
+    // });
 
-    Route::get('{id}/edit', function ($id) {
-        // Hiển thị Form chỉnh sửa thông tin khách hàng
-        session_start();
-        return view('modules.customer.edit', ['customer' => $_SESSION['customers'][$id], 'id' => $id]);
-    });
+    // Route::get('create', function () {
+    //     // Hiển thị Form tạo khách hàng
+    //     return view("modules.customer.create");
+    // });
 
-    Route::patch('{id}/update', function ($id) {
-        // xử lý lưu dữ liệu thông tin khách hàng được chỉnh sửa thông qua PATCH từ form
-        session_start();
-        $_SESSION['customers'][$id] = [
-            'id' => $id,
-            'hovaten' => $_POST['hovaten'],
-            'sodienthoai' => $_POST['sodienthoai'],
-            'email' => $_POST['email']
-        ];
-        return view('modules.customer.index', ['customers' => $_SESSION['customers']]);
-    });
+    // Route::post('store', function () {
+    //     // Xử lý lưu dữ liệu tạo khách hàng thong qua phương thức POST từ form
+    // session_start();
+    // $_SESSION['customers'][] = [
+    //     'id' => count($_SESSION['customers']) + 1,
+    //     'hovaten' => $_POST['hovaten'],
+    //     'sodienthoai' => $_POST['sodienthoai'],
+    //     'email' => $_POST['email']
+    // ];
+    // return view('modules.customer.index', ['customers' => $_SESSION['customers']]);
+    // });
 
-    Route::delete('{id}', function ($id) {
-        // Xóa thông tin dữ liệu khách hàng
-        session_start();
-        unset($_SESSION['customer'][$id]);
-        return view('modules.customer.index', ['customers' => $_SESSION['customers']]);
-    });
+    // Route::get('{id}/show', function ($id) {
+    // Hiển thị thông tin chi tiết khách hàng có mã định danh id
+    // session_start();
+    // return view('modules.customer.show', ['customer' => $_SESSION['customers'][$id]]);
+    // });
+
+    // Route::get('{id}/edit', function ($id) {
+    //     // Hiển thị Form chỉnh sửa thông tin khách hàng
+    // session_start();
+    // return view('modules.customer.edit', ['customer' => $_SESSION['customers'][$id], 'id' => $id]);
+    // });
+
+    // Route::patch('{id}/update', function ($id) {
+    //     // xử lý lưu dữ liệu thông tin khách hàng được chỉnh sửa thông qua PATCH từ form
+    // session_start();
+    // $_SESSION['customers'][$id] = [
+    //     'id' => $id,
+    //     'hovaten' => $_POST['hovaten'],
+    //     'sodienthoai' => $_POST['sodienthoai'],
+    //     'email' => $_POST['email']
+    // ];
+    // return view('modules.customer.index', ['customers' => $_SESSION['customers']]);
+    // });
+
+    // Route::delete('{id}', function ($id) {
+    //     // Xóa thông tin dữ liệu khách hàng
+    //     session_start();
+    //     unset($_SESSION['customer'][$id]);
+    //     return view('modules.customer.index', ['customers' => $_SESSION['customers']]);
+    // });
 });
 
 // [Thực hành] Ứng dụng xem giờ hiện tại của các thành phố trên thế giới
