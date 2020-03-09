@@ -14,6 +14,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// [Bài tập] Máy tính cá nhân
+
+Route::prefix('/simpleCalc')->group(
+    function () {
+        Route::get('/', "SimpleCalculate@index");
+
+        Route::post('/calculate', "SimpleCalculate@calculate");
+    }
+);
+
+
 // [Thực hành] Ứng dụng kiểm tra email hợp lệ
 
 Route::get('/BTcontroller', "IndexController@index");
