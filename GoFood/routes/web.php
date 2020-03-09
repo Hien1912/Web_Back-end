@@ -14,6 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// [Thực hành] Ứng dụng kiểm tra email hợp lệ
+
+Route::get('/BTcontroller', "IndexController@index");
 
 // [Thực hành] Khởi tạo ứng dụng Task Management - P1
 
