@@ -20,7 +20,7 @@
             <span class="text-success">{{ session('update_success') }}</span>
         </div>
         @endif
-        <form action="{{ route('task.update',['id'=> $task->id]) }}" method="post">
+        <form action="{{ route('task.update',['id'=> $task->id]) }}" method="post" enctype="multipart/form-data">
             @csrf
             @method('patch')
             <div class="form-group">
@@ -30,6 +30,11 @@
             <div class="form-group">
                 <label for="my-input">Content:</label>
                 <textarea name="content" class="form-control">{{ $task->content }}</textarea>
+            </div>
+            <div class="form-group">
+                <label for="my-input">Avatar:</label>
+                <input class="form-control" type="file" name="avatar" accept="image/*">
+                <span><img src="{{$task->avatar}}" width="50px" height="50px"></span>
             </div>
             <div class="form-group">
                 <label for="my-input">Due Date:</label>

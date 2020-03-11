@@ -20,18 +20,22 @@
                 <span class="text-info">{{ session('create_success') }}</span>
             </div>
         @endif
-        <form action="{{ route('task.store') }}" method="post">
+        <form action="{{ route('task.store') }}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
-                <label for="my-input">Title:</label>
+                <label>Title:</label>
                 <input class="form-control" type="text" name="title">
             </div>
             <div class="form-group">
-                <label for="my-input">Content:</label>
+                <label>Content:</label>
                 <textarea name="content" class="form-control"></textarea>
             </div>
             <div class="form-group">
-                <label for="my-input">Due Date:</label>
+               <label>Avatar</label>
+                <input class="form-control-file" type="file" name="avatar" accept="image/*">
+            </div>
+            <div class="form-group">
+                <label>Due Date:</label>
                 <input class="form-control" type="date" name="due_date">
             </div>
             <div class="form-group">

@@ -47,13 +47,29 @@ class TaskController extends Controller
         $content = request('content');
         $due_date = request('due_date');
 
-        DB::table('tasks')->insert(
-            [
-                'title' => $title,
-                'content' => $content,
-                'due_date' => $due_date
-            ]
-        );
+        if ($request->hasFile('avatar')) {
+            $file = $request->avatar;
+            $type = $file->getClientOriginalExtension();
+            $data = file_get_contents($file->getpathname());
+            $avatar = "data:image/$type;charset=utf-8;base64," . base64_encode($data);
+            DB::table('tasks')->insert(
+                [
+                    'title' => $title,
+                    'content' => $content,
+                    'avatar' => $avatar,
+                    'due_date' => $due_date
+                ]
+            );
+        } else {
+            DB::table('tasks')->insert(
+                [
+                    'title' => $title,
+                    'content' => $content,
+                    'due_date' => $due_date
+                ]
+            );
+        }
+
         return redirect('tasks/create')->with('create_success', "Thêm task thành công");
     }
 
@@ -90,18 +106,33 @@ class TaskController extends Controller
      */
     public function update(Request $request, $id)
     {
+
         $title = $request->title;
         $content = $request->content;
         $due_date = $request->due_date;
+        if ($request->hasFile('avatar')) {
+            $file = $request->avatar;
+            $type = $file->getClientOriginalExtension();
+            $data = file_get_contents($file->getpathname());
+            $avatar = "data:image/$type;charset=utf-8;base64," . base64_encode($data);
+            DB::table('tasks')->where('id', $id)->update(
+                [
 
-        DB::table('tasks')->where('id', $id)->update(
-            [
-                'title' => $title,
-                'content' => $content,
-                'due_date' => $due_date
-            ]
-        );
-
+                    'title' => $title,
+                    'content' => $content,
+                    'avatar' => $avatar,
+                    'due_date' => $due_date
+                ]
+            );
+        } else {
+            DB::table('tasks')->where('id', $id)->update(
+                [
+                    'title' => $title,
+                    'content' => $content,
+                    'due_date' => $due_date
+                ]
+            );
+        }
         return redirect()->route('task.edit', ['id' => $id])->with('update_success', 'Chỉnh sửa thành công');
     }
 
@@ -115,5 +146,17 @@ class TaskController extends Controller
     {
         DB::table('tasks')->where('id', $id)->delete();
         return redirect('task/index');
+    }
+
+    public function uploadImg($file)
+    {
+
+
+        $type = pathinfo($file['name'], PATHINFO_EXTENSION);
+        if (in_array(strtolower($type), ['png', 'jpg', 'jpeg', 'gif'])) {
+            $data = file_get_contents($file['tmp_name']);
+            $base64 = "data:image/$type;charset=utf-8;base64," . base64_encode($data);
+            return  $base64;
+        }
     }
 }
