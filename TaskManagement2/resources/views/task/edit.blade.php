@@ -34,7 +34,7 @@
             <div class="form-group">
                 <label for="my-input">Avatar:</label>
                 <input class="form-control" type="file" name="avatar" accept="image/*">
-                <span><img src="{{$task->avatar}}" width="50px" height="50px"></span>
+                <span><img src="{{ $task->avatar }}" width="50" height="50"></span>
             </div>
             <div class="form-group">
                 <label for="my-input">Due Date:</label>

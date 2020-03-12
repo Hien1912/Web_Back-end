@@ -37,7 +37,8 @@
                             <td>{{ $no + 1 }}</td>
                             <td>{{ $task->title }}</td>
                             <td>{{ $task->content }}</td>
-                            <td><img src="{{ $task->avatar }}" width="50px" height="50px"></td>
+                            <td><img src="{{ $task->avatar }}" width="50" height="50"></td>
+                           
                             <td>{{ $task->created_at }}</td>
                             <td>{{ $task->due_date }}</td>
                             <td>
