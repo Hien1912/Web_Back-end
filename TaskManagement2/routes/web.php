@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,7 +20,7 @@ Route::get('/', function () {
 
 
 Route::prefix('customer')->group(function () {
-
+    Auth::routes();
     Route::get('/', "CustomerController@index")->name('customer.home');
     route::get('create', "CustomerController@create")->name('customer.create');
     Route::post('store', "CustomerController@store")->name('customer.store');
@@ -29,7 +30,10 @@ Route::prefix('customer')->group(function () {
     Route::delete('{id}', 'CustomerController@destroy')->name('customer.delete');
 });
 
+// task management
+
 Route::prefix('tasks')->group(function () {
+    Auth::routes();
     Route::get('/', "TaskController@home")->name('task.home');
     Route::get('index', "TaskController@index")->name('task.index');
     route::get('create', "TaskController@create")->name('task.create');
