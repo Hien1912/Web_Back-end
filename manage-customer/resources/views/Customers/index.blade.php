@@ -13,7 +13,8 @@
             <div class="alert alert-success" role="alert">
                 {{ Session('success') }}
             </div>
-        @endif
+        @endif        
+        {{ $customers->links() }}
         <table class="table table-striped">
             <thead class="thead-dark text-center">
                 <tr>
@@ -32,7 +33,7 @@
                 @else
                  @foreach ($customers as $no => $customer)
                     <tr>
-                        <td>{{ $no + 1 }}</td>
+                        <td>{{ $customer->id }}</td>
                         <td><a href="{{ route('customer.show', ['customer' => $customer->id]) }}">{{ $customer->name }}
                 </a> </td>
                         <td>{{ $customer->dob }}</td>

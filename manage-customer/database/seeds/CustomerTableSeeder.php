@@ -14,26 +14,16 @@ class CustomerTableSeeder extends Seeder
      */
     public function run()
     {
-        $customer = new Customer();
-        $customer->id   = 1;
-        $customer->name = "customer 1";
-        $customer->dob  = "2018-09-26";
-        $customer->email  = "customer1@codegym.vn";
-        $customer->city_id  = 1;
-        $customer->save();
-        $customer = new Customer();
-        $customer->id   = 2;
-        $customer->name = "customer 2";
-        $customer->dob  = "2018-09-26";
-        $customer->email  = "customer2@codegym.vn";
-        $customer->city_id  = 1;
-        $customer->save();
-        $customer = new Customer();
-        $customer->id   = 3;
-        $customer->name = "customer 3";
-        $customer->dob  = "2018-09-26";
-        $customer->email  = "customer3@codegym.vn";
-        $customer->city_id  = 2;
-        $customer->save();
+        $dataArray = [];
+        for ($i = 0; $i < 20; $i++) {
+            array_push($dataArray, [
+                'name' => Str::random(10),
+                'dob' => date("Y-m-d", mt_rand(1, time())),
+                'email' => Str::random(10) . '@gmail.com',
+                'city_id' => random_int(1, 4)
+            ]);
+        }
+
+        DB::table('customers')->insert($dataArray);
     }
 }
