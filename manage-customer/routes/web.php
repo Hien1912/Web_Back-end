@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +15,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
+
+Auth::routes();
+
+Route::get('filter', 'CustomerController@filterByCity')->name('customer.filterByCity');
+Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
+Route::resource('customer', 'CustomerController')->middleware('auth');
+Route::resource('cities', 'CityController')->middleware('auth');
