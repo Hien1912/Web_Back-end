@@ -13,7 +13,7 @@
 <body>
     <div class="container">
         <div class="container">
-        <a href="{{ route('task.home') }}" class="btn btn-success">Home</a>|
+        <a href="{{ route('task.index') }}" class="btn btn-success">Home</a>|
         <a href="{{ route('task.index') }}" class="btn btn-info">Tasks list</a>
         <h2>Task information</h2>
         <div class="container">
@@ -38,7 +38,7 @@
                     <label for="">Due Date</label>
                 </div>
                 <div class="col-6">
-                <span>{{ $task->due_date}}</span>
+                <span>{{ $task->update_at}}</span>
                 </div>
             </div>
         </div>

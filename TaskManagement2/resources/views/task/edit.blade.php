@@ -12,7 +12,7 @@
 </head>
 <body>
     <div class="container">
-        <a href="{{ route('task.home') }}" class="btn btn-success">Home</a>|
+        <a href="{{ route('task.index') }}" class="btn btn-success">Home</a>|
         <a href="{{ route('task.index') }}" class="btn btn-info">Tasks list</a>
         <h2>Edit task</h2>
         @if (session('update_success'))
@@ -35,10 +35,6 @@
                 <label for="my-input">Avatar:</label>
                 <input class="form-control" type="file" name="avatar" accept="image/*">
                 <span><img src="{{ $task->avatar }}" width="50" height="50"></span>
-            </div>
-            <div class="form-group">
-                <label for="my-input">Due Date:</label>
-                <input class="form-control" type="date" name="due_date" value="{{ $task->due_date }}">
             </div>
             <div class="form-group">
                 <button type="submit" class="btn btn-success btn-block btn-lg">Update</button>
